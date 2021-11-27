@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	
+	<script type="text/javascript" th:fragment="javascript">
+		$(document).ready(function(){
+			$('#buscar_espec').autocomplete({
+				source:function(request, response){
+					$.ajax({
+						url: "/medicos/cargar-espec/"+request.term,
+						dataType: "json",
+						data:{
+							term: request.term
+						},
+						success: function(data){
+							response($.map(data, function(item){
+								return{
+									value: item.id,
+									label: item.especialidad,
+									labelN: item.nombre,
+									labelA: item.apellidos
+									//precio: item.precio
+								};
+							}));
+						}						
+					});
+				},
+				select: function(event, ui){
+					if(formatoItem.existeMedicina(ui.item.value)){
+						$('#buscar_espec').val('');
+						return false;	
+					}
+					
+					//$('#buscar_producto').val(ui.item.label);
+					var linea = $('#plantillaItemsCita').html();
+					linea = linea.replace(/{ID}/g, ui.item.value);
+					linea = linea.replace(/{ESPECIALIDAD}/g, ui.item.label);
+					linea = linea.replace(/{NOMBRE}/g, ui.item.labelN);
+					linea = linea.replace(/{APELLIDO}/g, ui.item.labelA);
+					
+					$('#cargarItemMedico tbody').append(linea);
+					$('#buscar_espec').val('');
+					return false;
+				}
+			});
+		});
+		
+		$('form').submit(function(){
+			$('#plantillaItemsCita').remove();
+			return;
+		})
+		
+		var formatoItem = {
+				existeMedicina: function(id){
+					var resultado = false;
+					$('input[name="item_id[]"]').each(function(){
+						if(parseInt(id) == parseInt($(this).val())){
+							resultado = true;
+						}
+					});
+					return resultado;
+				},
+				eliminarMedicina: function(id){
+					$('#row_'+id).remove();
+				}
+		}
+	</script>
+	
+</body>
+</html>

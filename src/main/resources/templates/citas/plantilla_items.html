@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+ 	<table th:fragment="itemsMedico" class="d-none">
+ 			<tbody id="plantillaItemsCita">
+ 				<tr id="row_{ID}">
+ 					<td class="d-none"><input type="hidden" value="{ID}" name="item_id[]"/></td>
+ 					<td>{ESPECIALIDAD}</td>
+ 					<td>{NOMBRE}</td>
+ 					<td>{APELLIDO}</td>
+ 									
+ 					
+ 					<td>
+ 						<a href="#" class="btn btn-dark" onclick="formatoItem.eliminarMedicina({ID});">
+ 						<i class="far fa-trash-alt"></i></a>
+ 					</td>
+ 				</tr> 				
+ 			</tbody>
+ 	</table>
+</body>
+
+</html>

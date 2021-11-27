@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="layout/layout :: head"></head>
+	
+	<body class="nav-md">
+		<div class="container body">
+      <div class="main_container">
+        <div th:replace="layout/layout :: botonDown"class="col-md-3 left_col"> </div>
+
+        
+        <div th:replace="layout/layout :: perfil" class="top_nav"></div>
+       
+
+        <!-- page content -->
+        <div class="right_col" role="main">                 
+           <div class="">
+    
+    <div class="container py-4">
+    	<div class="card bg-light">
+    		<div class="card-header">Registrar Atencion</div>
+    		<div class="card-body">
+    			<form th:action="@{/atencion/form}" th:object="${atencion}" method="post">
+    			
+    			<div class="row">
+    					<label class="col-md-2">Fecha Cita:</label>
+    					<div class="col-md-10">
+    						<input th:value="${atencion.cita.fechaCita}"
+    						class="form-control" disabled="disabled">     						
+    					</div>				
+    				</div>      			
+    			
+    				<div class="row mt-3">
+    					<label class="col-md-2">Requiere Atención:</label>
+    					<div class="col-md-10">
+    						<input th:value="${paciente.nombre}+ ' ' +${paciente.apellidos}"
+    						class="form-control" disabled="disabled">     						
+    					</div>				
+    				</div>    			
+    				  				
+    				<div class="row mt-3">
+    					<label class="col-md-2">Observaciones:</label>
+    					<div class="col-md-10">
+    						<input type="text" th:field="*{observacion}" class="form-control">
+    					</div>
+    				</div>
+    				
+    				<div class="row mt-3">
+    					<label class="col-md-2">Presion Arterial:</label>
+    					<div class="col-md-10">
+    						<input type="text" th:field="*{presion_arterial}" class="form-control">
+    					</div>
+    				</div>
+    				
+    				<div class="row mt-3">
+    					<label class="col-md-2">Buscar medicamento:</label>
+    					<div class="col-md-10">
+    						<input type="text" class="form-control" name="buscar_medicina" id="buscar_medicina">
+    					</div>
+    				</div>
+    				
+    				
+    				
+    				
+    				<table th:replace="atencion/plantilla_items :: itemsAtencion"></table>
+    				<br>
+    				<br>
+    				<table id="cargarItemMedicamento" class="table table-striped table-hover">
+    					<thead>
+    						<th>Medicina</th>
+    						<th>Precio</th>    						
+    						<th>Cantidad</th>
+    						<th>Total</th>
+    						<th>Eliminar</th>
+    					</thead>
+    					<tbody>
+    						
+    					</tbody>
+    				</table>
+    				
+    				<h4>Costo Atención: <span class="badge badge-dark" id="gran_total">0</span></h4>
+    				
+    				<div class="row mt-4">
+    					<div class="col-12">
+    						<button type="submit" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Registrar Atencion</button>
+    					</div>    					
+    				</div>
+    				
+    			</form>
+    		</div>
+    	</div>
+    </div>
+    
+  </div>
+        </div>
+        
+        
+        <footer th:replace="layout/layout :: footer"></footer>
+        
+      </div>
+    </div>
+	<script th:replace="atencion/js/autocomplete_espec :: javascript"></script>
+		   <div th:replace="layout/layout :: javas"></div>	
+	</body>
+</html>

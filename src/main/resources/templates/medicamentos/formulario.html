@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+		
+		<head th:replace="layout/layout :: head">  	
+		</head>
+	
+<body class="nav-md">
+		<div class="container body">
+      <div class="main_container">
+        <div th:replace="layout/layout :: botonDown"class="col-md-3 left_col"> </div>
+
+        
+        <div th:replace="layout/layout :: perfil" class="top_nav"></div>
+       
+
+        <!-- page content -->
+        <div class="right_col" role="main">                 
+          <div >
+    	<div class="container">
+	<br>
+		
+		<div class="card text-white bg-dark mb-3">
+			<div class="card-header" th:text="${crearForm}"></div>
+			<div class="card-body">			
+			
+				<form th:action="@{/medicamentos/form}" th:object="${medicamento}" method="post">
+				<div class="row">
+					<div class="col-md-6 mb-2">
+						<label>Nombre:</label>
+						<input type="text" th:field="*{nombre}" class="form-control" placeholder="Ingrese nombres" required="required">
+					</div>
+					<div class="col-md-6 mb-2">
+						<label>Buscar Categoría:</label>						
+						<input type="text" th:field="*{categoria1}" required="required" class="form-control" placeholder="Ingrese la categoría" name="buscar_producto" id="buscar_producto">
+					</div>
+				</div>				
+			
+				<div class="row">
+					<div class="col-md-6 mb-2">
+						<label>Stock:</label>
+						<input type="text" class="form-control" th:field="*{stock}"  placeholder="Ingrese stock" required="required"/>
+					</div>
+					<div class="col-md-6 mb-2">
+						<label>Fecha :</label>
+						<input type="date" class="form-control" th:field="*{fecha}"  required="required"/>
+					</div>						
+				</div>
+				<div class="row">						
+					<div class="col-md-6 mb-2">
+						<label>Precio :</label>
+						<input type="text"  class="form-control" th:field="*{precio}" placeholder="Ingrese el precio" required="required"/>
+					</div>
+				</div>
+				<br>
+				
+				
+				
+				<div class="row">
+					<div class="col-5 text-center">
+						<a th:href="@{/medicamentos/listar}"
+						 type="button" class=""><i class="fas fa-hand-point-left"></i>Volver</a>										
+					</div>
+					<input type="hidden" th:field="*{id}">
+					
+					<div class="col-5 text-center">
+						<button type="submit" class="btn btn-dark">
+						<i class="fas fa-file-export"></i>
+						Guardar medicamento</button>						
+					</div>
+					
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+  </div>
+        </div>
+        
+        
+        <footer th:replace="layout/layout :: footer"></footer>
+        
+      </div>
+    </div>
+			
+		   <div th:replace="layout/layout :: javas"></div>
+		   <script th:replace="medicamentos/js/autocomplete_producto :: javascript"></script>	
+	</body>
+	
+</html>

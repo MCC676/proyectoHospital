@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="layout/layout :: head"></head>
+	
+	<body class="nav-md">
+	<div class="container body">
+      <div class="main_container">
+        <div th:replace="layout/layout :: botonDown"class="col-md-3 left_col"> </div>
+
+        <!-- top navigation -->
+        <div th:replace="layout/layout :: perfil" class="top_nav"></div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">                 
+          <div class="">
+            <div class="row" style="display: inline-block;">
+            
+          </div>
+
+            <div class="row mb-4">              
+              <div class="table-responsive">
+              <h1 >Listado de Doctores</h1>
+              <a th:href="@{/medicos/form}" class=""><i class="fas fa-user-plus"></i> Añadir nuevo</a> 
+				<br>
+				<br>
+              <table class='table mb-0' id="table1">
+                <thead>
+                    <tr>
+                       	<th>ID</th>
+						<th>NOMBRE</th>
+						<th>APELLIDOS</th>
+						<th>ESPECIALIDAD</th>
+						<th>FECHA INGRESO</th>
+						<th>CITA</th>
+						<th></th>
+						<th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item: ${medicos}">
+                        <td class="table-primary" th:text="${item.id}"></td>						
+						<td class="table-primary" th:text="${item.nombre}"></td>
+						<td class="table-primary" th:text="${item.apellidos}"></td>
+						<td class="table-primary" th:text="${item.especialidad}"></td>						
+						<td class="table-primary" th:text="${item.fechaIngreso}"></td>
+						<td><a th:href="@{/atencion/form/}+${item.id}" ><i class="fas fa-stethoscope"></i>	Atender</a></td>	
+                        <td><a th:href="@{/medicos/form/}+${item.id}"class=""><i class="fas fa-edit"></i>Editar</a></td>
+                        <td><a th:href="@{/medicos/eliminar/}+${item.id}"class=""
+							onclick="return confirm('Seguro que desea eliminar este registro?');">
+								<i class="fas fa-user-times"></i>Eliminar
+						</a></td>
+                    </tr>                                     
+                </tbody>
+            </table>
+              </div>           
+            </div>
+          </div>
+        </div>
+        
+        <footer th:replace="layout/layout :: footer"></footer>
+      </div>
+    </div>
+	
+		   <div th:replace="layout/layout :: javas"></div>	
+	</body>
+</html>

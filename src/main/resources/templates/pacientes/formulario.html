@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+		
+		<head th:replace="layout/layout :: head"></head>
+	
+	<body class="nav-md">
+		<div class="container body">
+      <div class="main_container">
+        <div th:replace="layout/layout :: botonDown"class="col-md-3 left_col"> </div>
+
+        <!-- top navigation -->
+        <div th:replace="layout/layout :: perfil" class="top_nav"></div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">                 
+          <div >
+    	<div class="container">
+	<br>
+		
+		<div class="card " >
+			<div class="card-header" th:text="${crearForm}"></div>
+			<div class="card-body">			
+			
+				<form th:action="@{/pacientes/form}" th:object="${paciente}" method="post">
+				<div class="row">
+					<div class="col-md-6 mb-2">
+						<label>Nombres:</label>
+						<input type="text" th:field="*{nombre}" class="form-control" placeholder="Ingrese nombres" required="required">
+					</div>
+					<div class="col-md-6 mb-2">
+						<label>Apellidos:</label>
+						<input type="text" th:field="*{apellidos}" class="form-control" placeholder="Ingrese apellidos" required="required">
+					</div>
+				</div>				
+			
+				<div class="row">
+					<div class="col-md-6 mb-2">
+						<label>Ciudad:</label>
+						<input type="text" th:field="*{ciudad}" class="form-control" placeholder="Ingrese ciudad" required="required">
+					</div>	
+					<div class="col-md-6 mb-2">
+						<label>Dirección:</label>
+						<input type="text" th:field="*{direccion}" class="form-control" placeholder="Ingrese direccion" required="required">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-2">
+						<label>Teléfono:</label>
+						<input type="text" th:field="*{telefono}" class="form-control" placeholder="Ingrese telefono" required="required">
+					</div>	
+					<div class="col-md-6 mb-2">
+						<label>Fecha de ingreso:</label>
+						<input type="date" th:field="*{fechaCreacion}" class="form-control" required="required">
+					</div>
+				</div>
+				<br>
+				<input type="hidden" th:field="*{id}">
+				<div class="row">
+					<div class="col-5 text-center">
+						<a th:href="@{/pacientes/listar}"
+						 type="button" class=""><i class="fas fa-hand-point-left"></i> Volver</a>										
+					</div>
+					<div class="col-5 text-center">
+						<button type="submit" class="btn btn-dark">
+						<i class="fas fa-file-export"></i>
+						Guardar paciente</button>						
+					</div>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+  </div>
+        </div>
+        
+        <footer th:replace="layout/layout :: footer"></footer>
+      </div>
+    </div>
+	
+		   <div th:replace="layout/layout :: javas"></div>	
+	</body>
+	
+	
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="layout/layout :: head"></head>
+	
+	<body class="nav-md">
+		<div class="container body">
+      <div class="main_container">
+        <div th:replace="layout/layout :: botonDown"class="col-md-3 left_col"> </div>
+
+        
+        <div th:replace="layout/layout :: perfil" class="top_nav"></div>
+       
+
+        <!-- page content -->
+        <div class="right_col" role="main">                 
+                         
+          <div class="container">
+    	<div class="card border-info">
+    		<div class="card-header">Datos de paciente</div>
+    		<div class="card-body text-dark">
+    			<ul class="list-group">
+    				<li class="list-group-item" th:text="${paciente.nombre}"></li>
+    				<li class="list-group-item" th:text="${paciente.apellidos}"></li>
+    				<li class="list-group-item" th:text="${paciente.ciudad}"></li>
+    				<li class="list-group-item" th:text="${paciente.direccion}"></li>
+    				<li class="list-group-item" th:text="${paciente.telefono}"></li>
+    				<li class="list-group-item" th:text="${paciente.fechaCreacion}"></li>
+    			</ul>
+    			
+    			<div th:if="${#lists.isEmpty(paciente.citas)}" class="my-4">No hay citas registradas para el paciente</div>   			
+    			
+    			
+    			
+    			<table th:if="${not #lists.isEmpty(paciente.citas)}" class='table mb-0' id="table1">
+    				<thead>
+    					<tr>
+    						<th>Número Cita</th>
+    						<th>Presión Arterial</th>
+    						<th>Observación</th>
+    						<th>Fecha</th>
+    						<th>Costo</th>
+    					</tr>    				
+    				</thead>
+    				<tbody>
+    					<tr th:each="item: ${citas.atencion}">
+    						<td th:text="${item.id}"></td>
+    						<td th:text="${item.presion_arterial}"></td>
+    						<td th:text="${item.observacion}"></td>
+    						<td th:text="${item.fecha}"></td>
+    						<td th:text="${item.total}"></td>
+    					</tr>    				
+    				</tbody>
+    			</table>
+    			
+    		</div>
+    		
+    	</div>
+    </div>
+        
+        </div>
+        
+        
+        <footer th:replace="layout/layout :: footer"></footer>
+        
+      </div>
+    </div>
+	
+		   <div th:replace="layout/layout :: javas"></div>	
+	</body>
+</html>

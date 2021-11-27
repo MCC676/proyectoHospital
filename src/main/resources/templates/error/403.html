@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="layout/layout :: head"></head>
+	
+	<body class="nav-md">
+		<div class="container body">
+      <div class="main_container">
+        <div th:replace="layout/layout :: botonDown"class="col-md-3 left_col"> </div>
+
+        
+        <div th:replace="layout/layout :: perfil" class="top_nav"></div>
+       
+
+        <!-- page content -->
+        <div class="right_col" role="main">                 
+          <h2>Los usuarios no tienen permiso para realizar esta operación, contacte con el administrador del sistema.</h2>    
+        </div>
+        
+        
+        <footer th:replace="layout/layout :: footer"></footer>
+        
+      </div>
+    </div>
+	
+		   <div th:replace="layout/layout :: javas"></div>	
+	</body>
+</html>

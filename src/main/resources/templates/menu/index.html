@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="layout/layout :: head"></head>
+	
+	<body class="nav-md">
+		<div class="container body">
+      <div class="main_container">
+        <div th:replace="layout/layout :: botonDown"class="col-md-3 left_col"> </div>
+
+        
+        <div th:replace="layout/layout :: perfil" class="top_nav"></div>
+       
+
+        <!-- page content -->
+        <div class="right_col" role="main">                 
+          <div class="row">
+            <div class="col-md-4 col-sm-4 ">
+              <div class="x_panel">
+                <div class="x_title">
+                  <h2>Recent Activities <small>Sessions</small></h2>                  
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        <footer th:replace="layout/layout :: footer"></footer>
+        
+      </div>
+    </div>
+	
+		   <div th:replace="layout/layout :: javas"></div>	
+	</body>
+</html>

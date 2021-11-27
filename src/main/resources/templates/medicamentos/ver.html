@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head th:replace="layout/layout :: head"></head>
+	
+	<body class="skin-primary sidebar-mini">
+
+		
+
+		<div th:replace="layout/layout :: barrast" id="sidemenu" class="menu-collapsed"></div>
+		
+		<script th:replace="layout/layout :: botonb"></script>
+
+  <div class="content-wrapper">
+    <!-- CONTENIDO DE FORMULARIO -->
+    
+    <div class="container">
+    	<div class="card bg-light">
+    		<div class="card-header">Datos de paciente</div>
+    		<div class="card-body">
+    			<ul class="list-group">
+    				<li class="list-group-item" th:text="${paciente.nombre}"></li>
+    				<li class="list-group-item" th:text="${paciente.apellidos}"></li>
+    				<li class="list-group-item" th:text="${paciente.ciudad}"></li>
+    				<li class="list-group-item" th:text="${paciente.direccion}"></li>
+    				<li class="list-group-item" th:text="${paciente.telefono}"></li>
+    				<li class="list-group-item" th:text="${paciente.fechaCreacion}"></li>
+    			</ul>
+    			
+    			<div th:if="${#lists.isEmpty(paciente.citasPaciente)}" class="my-4">No hay citas para el cliente</div>
+    			
+    			<table th:if="${not #lists.isEmpty(cliente.citasPaciente)}" class="table table-bordered table-striped my-4">
+    				<thead>
+    					<tr>
+    						<th>Id</th>
+    						<th>Descripcion</th>
+    						<th>Fecha</th>
+    						<th>total</th>
+    					</tr>    				
+    				</thead>
+    				<tbody>
+    					<tr th:each="item: ${paciente.cistasPaciente}">
+    						<td th:text="${item.nroCita}"></td>
+    						<td th:text="${item.fecha}"></td>
+    					</tr>    				
+    				</tbody>
+    			</table>
+    			
+    		</div>
+    		
+    	</div>
+    </div>
+    
+    
+      
+    
+  </div>
+
+</body>
+</html>

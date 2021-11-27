@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="layout/layout :: head"></head>
+	
+	<body class="nav-md">
+		<div class="container body">
+      <div class="main_container">
+        <div th:replace="layout/layout :: botonDown"class="col-md-3 left_col"> </div>
+
+        
+        <div th:replace="layout/layout :: perfil" class="top_nav"></div>
+       
+
+        <!-- page content -->
+        <div class="right_col" role="main">                 
+           <div class="">
+    
+    <div class="container py-4">
+    	<div class="card bg-light">
+    		<div class="card-header">Registrar Cita</div>
+    		<div class="card-body">
+    			<form th:action="@{/citas/form}" th:object="${cita}" method="post">
+    				<div class="row">
+    					<label class="col-md-2">Paciente:</label>
+    					<div class="col-md-10">
+    						<input th:value="${cita.paciente.nombre}+' '+${cita.paciente.apellidos}"
+    						class="form-control" disabled="disabled">     						
+    					</div>				
+    				</div>
+    				
+    				<div class="row mt-3">
+    					<label class="col-md-2">Fecha de cita:</label>
+    					<div class="col-md-10">
+    						<input type="date" th:field="*{fechaCita}" class="form-control">
+    					</div>
+    				</div>
+    				
+    				  <div class="row mt-3">
+    					<label class="col-md-2">Area Especialidad:</label>
+    					<div class="col-md-10">
+    						<input type="text" class="form-control"  name="buscar_espec" id="buscar_espec">    
+    					</div>
+    				</div>
+    				
+    				
+    				
+    				
+    				<table th:replace="citas/plantilla_items :: itemsMedico"></table>
+    				<br>
+    				<br>
+    				<table id="cargarItemMedico" class="table table-striped table-hover">
+    					<thead>
+    						<th>Especialidad</th>
+    						<th>Nombre Médico</th>    						
+    						<th>Apellido Médico</th>
+    						<th>Eliminar</th>
+    					</thead>
+    					<tbody>
+    						
+    					</tbody>
+    				</table>
+    				
+    				
+    				<div class="row mt-4">
+    					<div class="col-12">
+    						<button type="submit" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Crear cita</button>
+    					</div>    					
+    				</div>
+    				
+    			</form>
+    		</div>
+    	</div>
+    </div>
+    
+  </div>
+        </div>
+        
+        
+        <footer th:replace="layout/layout :: footer"></footer>
+        
+      </div>
+    </div>
+	<script th:replace="citas/js/autocomplete_espec :: javascript"></script>
+		   <div th:replace="layout/layout :: javas"></div>	
+	</body>
+</html>
